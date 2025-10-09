@@ -117,14 +117,3 @@ class _MyAppState extends State<MyApp> {
 
 
 ``` __sliderDrawerKey.currentState.animationController```
-
-# Contribute to Development
-Your contribution will help improve the plugin
-
-<a href="https://www.buymeacoffee.com/nick94" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-
-License
-----
-
-BSD 2-Clause License
