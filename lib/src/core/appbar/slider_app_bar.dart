@@ -51,7 +51,7 @@ class _InternalSliderAppBar extends BaseSliderAppBar
         config: config,
       ),
       Expanded(child: config.title),
-      config.trailing ?? SizedBox(width: 35)
+      config.trailing ?? SizedBox(width: 0)
     ];
 
     if (slideDirection == SlideDirection.rightToLeft) {
