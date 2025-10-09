@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_slider_drawer/src/core/animation/animation_strategy.dart';
 import 'package:flutter_slider_drawer/src/core/animation/slider_drawer_controller.dart';
 import 'package:flutter_slider_drawer/src/core/appbar/slider_app_bar.dart';
+import 'package:flutter_slider_drawer/src/core/appbar/slider_app_bar_config.dart';
 import 'package:flutter_slider_drawer/src/core/slider_shadow.dart';
 import 'package:flutter_slider_drawer/src/slider_shadow.dart';
 import 'package:flutter_slider_drawer/src/slider_bar.dart';
@@ -79,6 +80,8 @@ class SliderDrawer extends StatefulWidget {
   /// The theme's [ThemeData.scaffoldBackgroundColor] by default.
   final Color? backgroundColor;
 
+  final SliderAppBarConfig? appBarConfig;
+
   const SliderDrawer(
       {Key? key,
       required this.slider,
@@ -90,6 +93,7 @@ class SliderDrawer extends StatefulWidget {
       this.slideDirection = SlideDirection.leftToRight,
       this.sliderBoxShadow,
       this.appBar,
+      this.appBarConfig,
       this.backgroundColor})
       : super(key: key);
 
@@ -126,6 +130,7 @@ class SliderDrawerState extends State<SliderDrawer>
       vsync: this,
       animationDuration: widget.animationDuration,
       slideDirection: widget.slideDirection,
+      appBarConfig: widget.appBarConfig,
     );
 
     _animation = Tween<double>(
