@@ -57,11 +57,15 @@ class _InternalSliderAppBar extends BaseSliderAppBar
     if (slideDirection == SlideDirection.rightToLeft) {
       items = items.reversed.toList();
     }
-    return Container(
-      height: kToolbarHeight,
-      padding: config.padding,
-      color: animationController.isCompleted ? Color(0xFFE5E5E5) : config.backgroundColor ?? Color(0xFFFFFFFF),
-      child: Row(children: items),
+    return ValueListenableBuilder<double>(
+      valueListenable: animationController,
+      builder: (context, value, child) => 
+       Container(
+        height: kToolbarHeight,
+        padding: config.padding,
+        color: animationController.isCompleted ? Color(0xFFE5E5E5) : config.backgroundColor ?? Color(0xFFFFFFFF),
+        child: Row(children: items),
+      )
     );
   }
 
