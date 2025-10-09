@@ -189,7 +189,7 @@ class SliderDrawerState extends State<SliderDrawer>
                 child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  color: widget.backgroundColor ?? Color(0xFFFFFFFF),
+                  color: _controller.isDrawerOpen ? Color(0xFFE5E5E5) : widget.backgroundColor ?? Color(0xFFFFFFFF),
                   child: Column(
                     children: [
                       AppBar(

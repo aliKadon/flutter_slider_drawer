@@ -60,7 +60,7 @@ class _InternalSliderAppBar extends BaseSliderAppBar
     return Container(
       height: kToolbarHeight,
       padding: config.padding,
-      color: config.backgroundColor ?? Color(0xFFFFFFFF),
+      color: animationController.isCompleted ? Color(0xFFE5E5E5) : config.backgroundColor ?? Color(0xFFFFFFFF),
       child: Row(children: items),
     );
   }
