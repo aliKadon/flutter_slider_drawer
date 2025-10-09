@@ -31,6 +31,7 @@ class SliderAppBarConfig {
   /// If both are provided, they override the default AnimatedIcon
   final ImageProvider? drawerOpenIcon;
   final ImageProvider? drawerCloseIcon;
+  final AnimationController? animationController;
 
   const SliderAppBarConfig({
     this.title = const Text('AppBar'),
@@ -43,6 +44,7 @@ class SliderAppBarConfig {
     this.splashColor,
     this.drawerOpenIcon,
     this.drawerCloseIcon,
+    this.animationController,
   });
 
   /// Creates a copy of this configuration with the given fields replaced
@@ -59,6 +61,7 @@ class SliderAppBarConfig {
     Color? splashColor,
     ImageProvider? drawerOpenIcon,
     ImageProvider? drawerCloseIcon,
+    AnimationController? animationController,
   }) {
     return SliderAppBarConfig(
       title: title ?? this.title,
@@ -71,6 +74,7 @@ class SliderAppBarConfig {
       splashColor: splashColor ?? this.splashColor,
       drawerOpenIcon: drawerOpenIcon ?? this.drawerOpenIcon,
       drawerCloseIcon: drawerCloseIcon ?? this.drawerCloseIcon,
+      animationController: animationController ?? this.animationController,
     );
   }
 }

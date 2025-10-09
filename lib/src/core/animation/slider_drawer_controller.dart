@@ -1,10 +1,12 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_slider_drawer/src/core/appbar/slider_app_bar_config.dart';
 import 'package:flutter_slider_drawer/src/slider_direction.dart';
 
 class SliderDrawerController extends ChangeNotifier {
   final AnimationController animationController;
   final SlideDirection slideDirection;
   final double threshold;
+  final SliderAppBarConfig? appBarConfig;
 
   bool _isDragging = false;
   double _percent = 0.0;
@@ -13,8 +15,9 @@ class SliderDrawerController extends ChangeNotifier {
     required TickerProvider vsync,
     required int animationDuration,
     required this.slideDirection,
+    this.appBarConfig,
     this.threshold = 0.3,
-  }) : animationController = AnimationController(
+  }) : animationController = appBarConfig?.animationController ?? AnimationController(
             vsync: vsync, duration: Duration(milliseconds: animationDuration));
 
   bool get isDragging => _isDragging;
