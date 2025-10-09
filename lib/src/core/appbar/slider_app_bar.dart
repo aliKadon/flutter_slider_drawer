@@ -63,7 +63,7 @@ class _InternalSliderAppBar extends BaseSliderAppBar
        Container(
         height: kToolbarHeight,
         padding: config.padding,
-        color: animationController.isCompleted ? Color.fromARGB(255, 157, 21, 21) : config.backgroundColor ?? Color(0xFFFFFFFF),
+        color: animationController.isCompleted ? Color(0xFFF8F8F8) : config.backgroundColor ?? Color(0xFFFFFFFF),
         child: Row(children: items),
       )
     );
@@ -93,26 +93,29 @@ class _LeadingIcon extends StatelessWidget {
         child: AnimatedBuilder(
           animation: animationController,
           builder: (context, child) {
-            return Stack(
-              alignment: Alignment.center,
-              children: [
-                Opacity(
-                  opacity: 1.0 - animationController.value,
-                  child: Image(
-                    image: config.drawerOpenIcon!,
-                    width: config.drawerIconSize,
-                    height: config.drawerIconSize,
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Opacity(
+                    opacity: 1.0 - animationController.value,
+                    child: Image(
+                      image: config.drawerOpenIcon!,
+                      width: config.drawerIconSize,
+                      height: config.drawerIconSize,
+                    ),
                   ),
-                ),
-                Opacity(
-                  opacity: animationController.value,
-                  child: Image(
-                    image: config.drawerCloseIcon!,
-                    width: config.drawerIconSize,
-                    height: config.drawerIconSize,
+                  Opacity(
+                    opacity: animationController.value,
+                    child: Image(
+                      image: config.drawerCloseIcon!,
+                      width: config.drawerIconSize,
+                      height: config.drawerIconSize,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           },
         ),

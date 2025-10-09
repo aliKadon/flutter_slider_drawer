@@ -192,7 +192,7 @@ class SliderDrawerState extends State<SliderDrawer>
                   Container(
                     width: double.infinity,
                     height: double.infinity,
-                    color: _controller.animationController.isCompleted ? Color.fromARGB(255, 165, 25, 25) : widget.backgroundColor ?? Color(0xFFFFFFFF),
+                    color: _controller.animationController.isCompleted ? Color(0xFFF8F8F8) : widget.backgroundColor ?? Color(0xFFFFFFFF),
                     child: Column(
                       children: [
                         AppBar(
