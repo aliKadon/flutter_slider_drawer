@@ -74,25 +74,63 @@ class _LeadingIcon extends StatelessWidget {
   final AnimationController animationController;
   final VoidCallback? onTap;
 
-  const _LeadingIcon(
-      {required this.config,
-      required this.animationController,
-      required this.onTap});
+  const _LeadingIcon({
+    required this.config,
+    required this.animationController,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
+    // ✅ If both custom icons are provided, use them
+    if (config.drawerOpenIcon != null && config.drawerCloseIcon != null) {
+      return GestureDetector(
+        onTap: onTap,
+        child: AnimatedBuilder(
+          animation: animationController,
+          builder: (context, child) {
+            return Stack(
+              alignment: Alignment.center,
+              children: [
+                Opacity(
+                  opacity: 1.0 - animationController.value,
+                  child: Image(
+                    image: config.drawerOpenIcon!,
+                    width: config.drawerIconSize,
+                    height: config.drawerIconSize,
+                  ),
+                ),
+                Opacity(
+                  opacity: animationController.value,
+                  child: Image(
+                    image: config.drawerCloseIcon!,
+                    width: config.drawerIconSize,
+                    height: config.drawerIconSize,
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      );
+    }
+
+    // ✅ Otherwise use default Material AnimatedIcon
     return config.isCupertino
         ? _AnimatedCupertinoIcon(progress: animationController, onTap: onTap)
-        : IconButton(
-            splashColor: config.splashColor,
-            icon: AnimatedIcon(
-                icon: AnimatedIcons.menu_close,
-                color: config.drawerIconColor,
-                size: config.drawerIconSize,
-                progress: animationController),
-            onPressed: onTap);
+        :  IconButton(
+      splashColor: config.splashColor,
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_close,
+        color: config.drawerIconColor,
+        size: config.drawerIconSize,
+        progress: animationController,
+      ),
+      onPressed: onTap,
+    );
   }
 }
+
 
 class _AnimatedCupertinoIcon extends StatelessWidget {
   final Animation<double> progress;
