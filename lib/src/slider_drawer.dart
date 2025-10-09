@@ -186,21 +186,25 @@ class SliderDrawerState extends State<SliderDrawer>
                 onHorizontalDragUpdate: widget.isDraggable
                     ? (details) => _handleDragUpdate(details, constraints)
                     : null,
-                child: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  color: _controller.isDrawerOpen ? Color(0xFFE5E5E5) : widget.backgroundColor ?? Color(0xFFFFFFFF),
-                  child: Column(
-                    children: [
-                      AppBar(
-                        slideDirection: widget.slideDirection,
-                        animationDrawerController:
-                            _controller.animationController,
-                        appBar: widget.appBar,
-                        onDrawerTap: _controller.toggle,
-                      ),
-                      Expanded(child: widget.child),
-                    ],
+                child: ValueListenableBuilder<double>(
+                  valueListenable: _controller.animationController,
+                  builder: (context, value, child) =>
+                  Container(
+                    width: double.infinity,
+                    height: double.infinity,
+                    color: _controller.animationController.isCompleted ? Color(0xFFF8F8F8) : widget.backgroundColor ?? Color(0xFFFFFFFF),
+                    child: Column(
+                      children: [
+                        AppBar(
+                          slideDirection: widget.slideDirection,
+                          animationDrawerController:
+                              _controller.animationController,
+                          appBar: widget.appBar,
+                          onDrawerTap: _controller.toggle,
+                        ),
+                        Expanded(child: widget.child),
+                      ],
+                    ),
                   ),
                 ),
               ),
