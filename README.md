@@ -36,6 +36,10 @@ dependencies:
         key: _sliderDrawerKey,
         appBar: SliderAppBar(
           config: SliderAppBarConfig(
+/// Customizing open and close icon for drawer
+            drawerOpenIcon: const AssetImage(CustomAssets.drawerImageOpen),
+           drawerCloseIcon: const AssetImage(CustomAssets.drawerImageClose),
+
             title: Text(
               title,
               textAlign: TextAlign.center,
@@ -91,6 +95,7 @@ class _MyAppState extends State<MyApp> {
                   onDrawerTap: () {
                     debugPrint("Drawer is open in on DrawerTap");
                   },
+
           config: SliderAppBarConfig(
             title: Text(
               title,
