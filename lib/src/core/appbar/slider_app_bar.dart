@@ -20,7 +20,8 @@ class SliderAppBar extends BaseSliderAppBar {
   const SliderAppBar({
     Key? key,
     required SliderAppBarConfig config,
-  }) : super(key: key, config: config);
+    VoidCallback? onDrawerTap,
+  }) : super(key: key, config: config, onDrawerTap: onDrawerTap);
 
   @override
   Widget build(BuildContext context) {
@@ -197,12 +198,27 @@ class AppBar extends StatelessWidget {
     if (appBar is SliderAppBar) {
       final sliderAppBar = appBar as SliderAppBar;
 
-      return _InternalSliderAppBar(
-        animationController: animationDrawerController,
-        config: sliderAppBar.config,
-        slideDirection: slideDirection,
-        onDrawerTap: onDrawerTap,
+      return ValueListenableBuilder<double>(
+        valueListenable: animationDrawerController,
+          builder: (context, progressValue, child) {
+            final isCompleted = animationDrawerController.isCompleted;
+            return _InternalSliderAppBar(
+              animationController: animationDrawerController,
+              config: sliderAppBar.config,
+              slideDirection: slideDirection,
+              onDrawerTap: () {
+                onDrawerTap?.call();
+
+                if (isCompleted) {
+                  sliderAppBar.onDrawerTap?.call();
+                }
+
+                // sliderAppBar.onDrawerTap?.call();
+              },
+            );
+          }
       );
+
     }
     return SizedBox.shrink();
   }
