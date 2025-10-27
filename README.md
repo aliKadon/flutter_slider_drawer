@@ -84,6 +84,10 @@ class _MyAppState extends State<MyApp> {
       body: SliderDrawer(
         key: _sliderDrawerKey,
         appBar: SliderAppBar(
+/// this let you to do something when you click on the drawer (when you're opening and closing drawer)
+                  onDrawerTap: () {
+                    debugPrint("Drawer is open in on DrawerTap");
+                  },
           config: SliderAppBarConfig(
             title: Text(
               title,
