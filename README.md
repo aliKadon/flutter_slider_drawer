@@ -23,6 +23,9 @@ dependencies:
   - Provide RTL(RightToLeft),LTR(LeftToRight) and TTB(TopToBottom) slider open selection
   - Provide Custom Appbar support and you can also use plugin appBar with use of `SliderAppBar` widget
   - If you are using CupertinoApp then pass `isCupertino: true`
+    # new feature
+  - add onDrawerTap
+  - Customizing the open and close icon 
 
 
 # Code
