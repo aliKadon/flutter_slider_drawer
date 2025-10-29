@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_slider_drawer/src/core/appbar/slider_app_bar_config.dart';
-import 'package:flutter_slider_drawer/src/slider_direction.dart';
+import 'package:customized_flutter_slider_drawer/src/core/appbar/slider_app_bar_config.dart';
+import 'package:customized_flutter_slider_drawer/src/slider_direction.dart';
 
 class SliderDrawerController extends ChangeNotifier {
   final AnimationController animationController;
@@ -17,8 +17,12 @@ class SliderDrawerController extends ChangeNotifier {
     required this.slideDirection,
     this.appBarConfig,
     this.threshold = 0.3,
-  }) : animationController = appBarConfig?.animationController ?? AnimationController(
-            vsync: vsync, duration: Duration(milliseconds: animationDuration));
+  }) : animationController =
+           appBarConfig?.animationController ??
+           AnimationController(
+             vsync: vsync,
+             duration: Duration(milliseconds: animationDuration),
+           );
 
   bool get isDragging => _isDragging;
 

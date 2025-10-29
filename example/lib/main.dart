@@ -17,9 +17,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: HomePage(),
-      ),
+      home: Scaffold(body: HomePage()),
     );
   }
 }

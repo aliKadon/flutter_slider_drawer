@@ -17,17 +17,20 @@ class SliderMenu extends StatelessWidget {
           const _Profile(),
           const SizedBox(height: 20),
           ...[
-            Menu(Icons.home, 'Home'),
-            Menu(Icons.add_circle, 'Add Post'),
-            Menu(Icons.notifications_active, 'Notification'),
-            Menu(Icons.favorite, 'Likes'),
-            Menu(Icons.settings, 'Setting'),
-            Menu(Icons.arrow_back_ios, 'LogOut')
-          ]
-              .map((menu) => _MenuItem(
+                Menu(Icons.home, 'Home'),
+                Menu(Icons.add_circle, 'Add Post'),
+                Menu(Icons.notifications_active, 'Notification'),
+                Menu(Icons.favorite, 'Likes'),
+                Menu(Icons.settings, 'Setting'),
+                Menu(Icons.arrow_back_ios, 'LogOut'),
+              ]
+              .map(
+                (menu) => _MenuItem(
                   title: menu.title,
                   iconData: menu.iconData,
-                  onTap: onItemClick))
+                  onTap: onItemClick,
+                ),
+              )
               .toList(),
         ],
       ),
@@ -40,19 +43,20 @@ class _MenuItem extends StatelessWidget {
   final IconData iconData;
   final Function(String)? onTap;
 
-  const _MenuItem(
-      {Key? key,
-      required this.title,
-      required this.iconData,
-      required this.onTap})
-      : super(key: key);
+  const _MenuItem({
+    Key? key,
+    required this.title,
+    required this.iconData,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        title: Text(title, style: const TextStyle(color: Colors.black)),
-        leading: Icon(iconData, color: Colors.black),
-        onTap: () => onTap?.call(title));
+      title: Text(title, style: const TextStyle(color: Colors.black)),
+      leading: Icon(iconData, color: Colors.black),
+      onTap: () => onTap?.call(title),
+    );
   }
 }
 
@@ -70,8 +74,8 @@ class _Profile extends StatelessWidget {
           child: CircleAvatar(
             radius: 60,
             backgroundImage: Image.network(
-                    'https://nikhilvadoliya.github.io/assets/images/nikhil_1.webp')
-                .image,
+              'https://nikhilvadoliya.github.io/assets/images/nikhil_1.webp',
+            ).image,
           ),
         ),
         const SizedBox(height: 20),

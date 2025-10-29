@@ -1,15 +1,21 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_slider_drawer/src/core/animation/slider_drawer_controller.dart';
-import 'package:flutter_slider_drawer/src/slider_direction.dart';
+import 'package:customized_flutter_slider_drawer/src/core/animation/slider_drawer_controller.dart';
+import 'package:customized_flutter_slider_drawer/src/slider_direction.dart';
 
 abstract class AnimationStrategy {
   Offset getOffset(SlideDirection direction, double value);
 
   bool shouldStartDrag(
-      DragStartDetails details, BuildContext context, SlideDirection direction);
+    DragStartDetails details,
+    BuildContext context,
+    SlideDirection direction,
+  );
 
-  void handleDragUpdate(DragUpdateDetails details, BoxConstraints constraints,
-      SliderDrawerController controller);
+  void handleDragUpdate(
+    DragUpdateDetails details,
+    BoxConstraints constraints,
+    SliderDrawerController controller,
+  );
 }
 
 class SliderAnimationStrategy implements AnimationStrategy {
@@ -29,12 +35,15 @@ class SliderAnimationStrategy implements AnimationStrategy {
   }
 
   @override
-  void handleDragUpdate(DragUpdateDetails details, BoxConstraints constraints,
-      SliderDrawerController controller) {
+  void handleDragUpdate(
+    DragUpdateDetails details,
+    BoxConstraints constraints,
+    SliderDrawerController controller,
+  ) {
     if (controller.isHorizontalSlide) {
       var position =
           (details.globalPosition.dx).clamp(0.0, constraints.maxWidth) /
-              constraints.maxWidth;
+          constraints.maxWidth;
 
       if (controller.slideDirection == SlideDirection.rightToLeft) {
         position = 1 - position;
@@ -45,8 +54,11 @@ class SliderAnimationStrategy implements AnimationStrategy {
   }
 
   @override
-  bool shouldStartDrag(DragStartDetails details, BuildContext context,
-      SlideDirection direction) {
+  bool shouldStartDrag(
+    DragStartDetails details,
+    BuildContext context,
+    SlideDirection direction,
+  ) {
     final rightSideWidthGesture =
         MediaQuery.sizeOf(context).width - _kWidthGesture;
 

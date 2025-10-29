@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_slider_drawer/src/core/animation/animation_strategy.dart';
-import 'package:flutter_slider_drawer/src/core/animation/slider_drawer_controller.dart';
-import 'package:flutter_slider_drawer/src/core/appbar/slider_app_bar.dart';
-import 'package:flutter_slider_drawer/src/core/appbar/slider_app_bar_config.dart';
-import 'package:flutter_slider_drawer/src/core/slider_shadow.dart';
-import 'package:flutter_slider_drawer/src/slider_shadow.dart';
-import 'package:flutter_slider_drawer/src/slider_bar.dart';
-import 'package:flutter_slider_drawer/src/slider_direction.dart';
+import 'package:customized_flutter_slider_drawer/src/core/animation/animation_strategy.dart';
+import 'package:customized_flutter_slider_drawer/src/core/animation/slider_drawer_controller.dart';
+import 'package:customized_flutter_slider_drawer/src/core/appbar/slider_app_bar.dart';
+import 'package:customized_flutter_slider_drawer/src/core/appbar/slider_app_bar_config.dart';
+import 'package:customized_flutter_slider_drawer/src/core/slider_shadow.dart';
+import 'package:customized_flutter_slider_drawer/src/slider_shadow.dart';
+import 'package:customized_flutter_slider_drawer/src/slider_bar.dart';
+import 'package:customized_flutter_slider_drawer/src/slider_direction.dart';
 
 /// SliderDrawer which have two [child] and [slider] parameter
 ///
@@ -75,27 +75,27 @@ class SliderDrawer extends StatefulWidget {
   ///
   final SlideDirection slideDirection;
 
-// The color of the [Material] widget that underlies the entire Scaffold.
+  // The color of the [Material] widget that underlies the entire Scaffold.
   ///
   /// The theme's [ThemeData.scaffoldBackgroundColor] by default.
   final Color? backgroundColor;
 
   final SliderAppBarConfig? appBarConfig;
 
-  const SliderDrawer(
-      {Key? key,
-      required this.slider,
-      required this.child,
-      this.isDraggable = true,
-      this.animationDuration = 400,
-      this.sliderOpenSize = 265,
-      this.sliderCloseSize = 0,
-      this.slideDirection = SlideDirection.leftToRight,
-      this.sliderBoxShadow,
-      this.appBar,
-      this.appBarConfig,
-      this.backgroundColor})
-      : super(key: key);
+  const SliderDrawer({
+    Key? key,
+    required this.slider,
+    required this.child,
+    this.isDraggable = true,
+    this.animationDuration = 400,
+    this.sliderOpenSize = 265,
+    this.sliderCloseSize = 0,
+    this.slideDirection = SlideDirection.leftToRight,
+    this.sliderBoxShadow,
+    this.appBar,
+    this.appBarConfig,
+    this.backgroundColor,
+  }) : super(key: key);
 
   @override
   SliderDrawerState createState() => SliderDrawerState();
@@ -133,14 +133,17 @@ class SliderDrawerState extends State<SliderDrawer>
       appBarConfig: widget.appBarConfig,
     );
 
-    _animation = Tween<double>(
-      begin: widget.sliderCloseSize,
-      end: widget.sliderOpenSize,
-    ).animate(CurvedAnimation(
-      parent: _controller.animationController,
-      curve: Curves.decelerate,
-      reverseCurve: Curves.decelerate,
-    ));
+    _animation =
+        Tween<double>(
+          begin: widget.sliderCloseSize,
+          end: widget.sliderOpenSize,
+        ).animate(
+          CurvedAnimation(
+            parent: _controller.animationController,
+            curve: Curves.decelerate,
+            reverseCurve: Curves.decelerate,
+          ),
+        );
 
     _animationStrategy = SliderAnimationStrategy();
   }
@@ -188,11 +191,12 @@ class SliderDrawerState extends State<SliderDrawer>
                     : null,
                 child: ValueListenableBuilder<double>(
                   valueListenable: _controller.animationController,
-                  builder: (context, value, child) =>
-                  Container(
+                  builder: (context, value, child) => Container(
                     width: double.infinity,
                     height: double.infinity,
-                    color: _controller.animationController.isCompleted ? Color(0xFFF8F8F8) : widget.backgroundColor ?? Color(0xFFFFFFFF),
+                    color: _controller.animationController.isCompleted
+                        ? Color(0xFFF8F8F8)
+                        : widget.backgroundColor ?? Color(0xFFFFFFFF),
                     child: Column(
                       children: [
                         AppBar(
@@ -208,7 +212,7 @@ class SliderDrawerState extends State<SliderDrawer>
                   ),
                 ),
               ),
-            )
+            ),
           ],
         );
       },
@@ -217,7 +221,10 @@ class SliderDrawerState extends State<SliderDrawer>
 
   void _handleDragStart(DragStartDetails details) {
     if (_animationStrategy.shouldStartDrag(
-        details, context, widget.slideDirection)) {
+      details,
+      context,
+      widget.slideDirection,
+    )) {
       _controller.startDragging();
     }
   }
@@ -227,7 +234,9 @@ class SliderDrawerState extends State<SliderDrawer>
   }
 
   void _handleDragUpdate(
-      DragUpdateDetails details, BoxConstraints constraints) {
+    DragUpdateDetails details,
+    BoxConstraints constraints,
+  ) {
     _animationStrategy.handleDragUpdate(details, constraints, _controller);
   }
 

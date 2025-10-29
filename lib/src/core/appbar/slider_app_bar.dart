@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
+import 'package:customized_flutter_slider_drawer/flutter_slider_drawer.dart';
 
 abstract class BaseSliderAppBar extends StatelessWidget {
   // Configuration for the app bar's appearance and behavior
@@ -9,11 +9,8 @@ abstract class BaseSliderAppBar extends StatelessWidget {
   /// Callback function when the drawer icon is tapped
   final VoidCallback? onDrawerTap;
 
-  const BaseSliderAppBar({
-    Key? key,
-    required this.config,
-    this.onDrawerTap,
-  }) : super(key: key);
+  const BaseSliderAppBar({Key? key, required this.config, this.onDrawerTap})
+    : super(key: key);
 }
 
 class SliderAppBar extends BaseSliderAppBar {
@@ -52,7 +49,7 @@ class _InternalSliderAppBar extends BaseSliderAppBar
         config: config,
       ),
       Expanded(child: config.title),
-      config.trailing ?? SizedBox(width: 0)
+      config.trailing ?? SizedBox(width: 0),
     ];
 
     if (slideDirection == SlideDirection.rightToLeft) {
@@ -60,13 +57,14 @@ class _InternalSliderAppBar extends BaseSliderAppBar
     }
     return ValueListenableBuilder<double>(
       valueListenable: animationController,
-      builder: (context, value, child) => 
-       Container(
+      builder: (context, value, child) => Container(
         height: kToolbarHeight,
         padding: config.padding,
-        color: animationController.isCompleted ? Color(0xFFF8F8F8) : config.backgroundColor ?? Color(0xFFFFFFFF),
+        color: animationController.isCompleted
+            ? Color(0xFFF8F8F8)
+            : config.backgroundColor ?? Color(0xFFFFFFFF),
         child: Row(children: items),
-      )
+      ),
     );
   }
 
@@ -126,27 +124,28 @@ class _LeadingIcon extends StatelessWidget {
     // ✅ Otherwise use default Material AnimatedIcon
     return config.isCupertino
         ? _AnimatedCupertinoIcon(progress: animationController, onTap: onTap)
-        :  IconButton(
-      splashColor: config.splashColor,
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_close,
-        color: config.drawerIconColor,
-        size: config.drawerIconSize,
-        progress: animationController,
-      ),
-      onPressed: onTap,
-    );
+        : IconButton(
+            splashColor: config.splashColor,
+            icon: AnimatedIcon(
+              icon: AnimatedIcons.menu_close,
+              color: config.drawerIconColor,
+              size: config.drawerIconSize,
+              progress: animationController,
+            ),
+            onPressed: onTap,
+          );
   }
 }
-
 
 class _AnimatedCupertinoIcon extends StatelessWidget {
   final Animation<double> progress;
   final VoidCallback? onTap;
 
-  const _AnimatedCupertinoIcon(
-      {Key? key, required this.progress, required this.onTap})
-      : super(key: key);
+  const _AnimatedCupertinoIcon({
+    Key? key,
+    required this.progress,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -200,25 +199,24 @@ class AppBar extends StatelessWidget {
 
       return ValueListenableBuilder<double>(
         valueListenable: animationDrawerController,
-          builder: (context, progressValue, child) {
-            final isCompleted = animationDrawerController.isCompleted;
-            return _InternalSliderAppBar(
-              animationController: animationDrawerController,
-              config: sliderAppBar.config,
-              slideDirection: slideDirection,
-              onDrawerTap: () {
-                onDrawerTap?.call();
+        builder: (context, progressValue, child) {
+          final isCompleted = animationDrawerController.isCompleted;
+          return _InternalSliderAppBar(
+            animationController: animationDrawerController,
+            config: sliderAppBar.config,
+            slideDirection: slideDirection,
+            onDrawerTap: () {
+              onDrawerTap?.call();
 
-                if (isCompleted) {
-                  sliderAppBar.onDrawerTap?.call();
-                }
+              if (isCompleted) {
+                sliderAppBar.onDrawerTap?.call();
+              }
 
-                // sliderAppBar.onDrawerTap?.call();
-              },
-            );
-          }
+              // sliderAppBar.onDrawerTap?.call();
+            },
+          );
+        },
       );
-
     }
     return SizedBox.shrink();
   }

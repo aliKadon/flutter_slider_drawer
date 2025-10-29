@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_slider_drawer/src/core/slider_shadow.dart';
-import 'package:flutter_slider_drawer/src/core/utils.dart';
+import 'package:customized_flutter_slider_drawer/src/core/slider_shadow.dart';
+import 'package:customized_flutter_slider_drawer/src/core/utils.dart';
 
 import 'slider_direction.dart';
 
@@ -12,8 +12,8 @@ class SliderShadow extends StatelessWidget {
     required this.sliderBoxShadow,
     required this.slideDirection,
     required this.sliderOpenSize,
-  })  : _animationDrawerController = animationDrawerController,
-        super(key: key);
+  }) : _animationDrawerController = animationDrawerController,
+       super(key: key);
 
   final AnimationController? _animationDrawerController;
   final Animation animation;
@@ -28,21 +28,27 @@ class SliderShadow extends StatelessWidget {
       builder: (_, child) {
         return Transform.translate(
           offset: Utils.getOffsetValueForShadow(
-              slideDirection, animation.value, sliderOpenSize),
+            slideDirection,
+            animation.value,
+            sliderOpenSize,
+          ),
           child: child,
         );
       },
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(shape: BoxShape.rectangle, boxShadow: [
-          BoxShadow(
-            color: sliderBoxShadow.color,
-            blurRadius: sliderBoxShadow.blurRadius,
-            spreadRadius: sliderBoxShadow.spreadRadius,
-            offset: Offset(15.0, 15.0),
-          )
-        ]),
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          boxShadow: [
+            BoxShadow(
+              color: sliderBoxShadow.color,
+              blurRadius: sliderBoxShadow.blurRadius,
+              spreadRadius: sliderBoxShadow.spreadRadius,
+              offset: Offset(15.0, 15.0),
+            ),
+          ],
+        ),
       ),
     );
   }

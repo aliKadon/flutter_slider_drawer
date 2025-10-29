@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
+import 'package:customized_flutter_slider_drawer/flutter_slider_drawer.dart';
 
 class Utils {
   ///
@@ -9,7 +9,10 @@ class Utils {
   Utils._();
 
   static Offset getOffsetValueForShadow(
-      SlideDirection direction, double value, double slideOpenWidth) {
+    SlideDirection direction,
+    double value,
+    double slideOpenWidth,
+  ) {
     switch (direction) {
       case SlideDirection.leftToRight:
         return Offset(value - (slideOpenWidth > 50 ? 20 : 10), 0);
