@@ -1,16 +1,16 @@
 ![slider_document](banner.png)
 
-# Flutter Slider Drawer
+# Customized Flutter Slider Drawer
 [![pub package](https://img.shields.io/pub/v/flutter_slider_drawer)](https://pub.dev/packages/flutter_slider_drawer)   [![pub package](https://img.shields.io/github/languages/code-size/NikhilVadoliya/Flutter_slider_drawer)](https://pub.dev/packages/flutter_slider_drawer)
 
 A Flutter package with custom implementation of the Slider Drawer Menu 
 
 
-To start using this package, add `flutter_slider_drawer` dependency to your `pubspec.yaml`
+To start using this package, add `customized_flutter_slider_drawer` dependency to your `pubspec.yaml`
 
 ```yaml
 dependencies:
-  flutter_slider_drawer: '<latest_release>'
+ customized_flutter_slider_drawer: '<latest_release>'
 ```
 
 # Features

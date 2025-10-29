@@ -1,3 +1,16 @@
+## [0.1.3] - Bug Fixes and Improvements
+
+### 🐞 Fixes
+- Fixed minor issues affecting drawer behavior and animations.
+- Improved overall performance and stability.
+- Minor UI and code quality refinements.
+
+---
+
+
+## [0.1.2] - Documentation
+- README updates only (no code changes).
+
 ## [0.1.1] - Bug Fix Release
 
 ### 🐞 Fixes

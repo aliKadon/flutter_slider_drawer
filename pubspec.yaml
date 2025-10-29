@@ -1,6 +1,6 @@
 name: customized_flutter_slider_drawer
 description: A Flutter package with custom implementation of the Slider Drawer Menu
-version: 0.1.1
+version: 0.1.3
 homepage: https://github.com/aliKadon/flutter_slider_drawer
 issue_tracker: https://github.com/aliKadon/flutter_slider_drawer/issues
 maintainer: Ali Kadon

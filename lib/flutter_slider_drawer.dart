@@ -1,4 +1,4 @@
-library flutter_slider_drawer;
+library customized_flutter_slider_drawer;
 
 export 'package:customized_flutter_slider_drawer/src/slider_direction.dart';
 export 'package:customized_flutter_slider_drawer/src/slider_drawer.dart';
