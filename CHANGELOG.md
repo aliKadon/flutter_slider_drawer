@@ -1,93 +1,37 @@
-## [3.0.2] - Enhance documentation
-* Update documentation for better understanding.
-* 
-## [3.0.1] - Enhance documentation
-* Update documentation for better understanding.
+## [0.1.1] - Bug Fix Release
 
-## [3.0.0] - Enhance animation and performance
-* Upgrade dart version min `3.0.0`.
-#### Deprecated Features:
-*	`isTitleCenter`: Replaced with `TextAlign` in the `Text` widget for better control.
-*	`drawerIcon`: Use a custom appBar for enhanced customization.
-*	`appBarHeight`: This feature has been deprecated.
-*	`appBarColor`: Replaced with backgroundColor in `SliderAppBarConfig`.
-*	`appBarPadding`: Now replaced with padding in `SliderAppBarConfig`.
-#### New Features:
-*	Added `SliderAppBarConfig` for streamlined AppBar configuration.
-#### Rename SlideDirection enums for consistency:
-*	LEFT_TO_RIGHT → leftToRight
-*	RIGHT_TO_LEFT → rightToLeft
-*	TOP_TO_BOTTOM → topToBottom
+### 🐞 Fixes
+- Fixed minor issues related to drawer icon state changes.
+- Improved reliability of the `onDrawerTap` callback.
+- Optimized animation timing for smoother transitions.
+- General stability improvements and code cleanup.
 
+---
 
-## [2.1.3] - Release
-* Improvement
+## [0.1.0] - Initial Release
 
-## [2.1.2] - Release
- * replace `sliderShadow` to `sliderBoxShadow`
- * Slider RightToLeft : Gesture area issue fixed
- * Fixed issue : #21 and #23
+This is the first release of **customized_flutter_slider_drawer**,  
+a customized and enhanced version of the original `flutter_slider_drawer` package.
 
-## [2.1.1] - Release
- * Provide custom appBar feature
- * Slider LeftToRight and RightToLeft issue fixed
+### ✨ New Features
+- Added **customizable drawer icon**:
+   - You can now set your own icon for the drawer.
+   - The icon can change automatically when the drawer is **opened** or **closed**.
+- Added **onDrawerTap** callback to handle drawer tap events easily.
 
+### ⚙️ Improvements
+- Built upon the latest stable version of `flutter_slider_drawer` (v3.0.2).
+- Enhanced animation and performance consistency with Flutter 3.x.
+- Updated documentation for clarity and simplicity.
 
-## [2.1.0] - Release
- * Code Refactor
- * Improve Documentation
- * deprecated : `sliderMenuOpenSize` and `sliderMenuCloseSize`
- * deprecated : `sliderMenu` and `sliderMain`
- * deprecated : `closeDrawer` and `openDrawer`
- * deprecated : `SliderMenuContainerState`
- * deprecated : `hasAppBar`
- * deprecated : `isShadow`
- * replace `sliderMenuOpenSize` and `sliderMenuCloseSize` to `sliderOpenSize` and `sliderCloseSize`
- * replace `sliderMenu` and `sliderMain` to `slider` and `child`
- * replace `closeDrawer` and `openDrawer` to `closeSlider` and `openSlider`
- * replace `SliderMenuContainerState`  to `SliderDrawerState`
- * replace `hasAppBar`  to 'appBar' : if you set `app:null` then it will hide
- * replace `isShadow`  to 'sliderShadow' : if you set `sliderShadow:null` then shadow will not come
-   by default it's null
+### 🧹 Deprecations (inherited from the base package)
+- Removed old/deprecated parameters (`isTitleCenter`, `appBarHeight`, etc.).
+- Continued using `SliderAppBarConfig` for app bar customization.
+- Maintains renamed enum values for clarity:
+   - `LEFT_TO_RIGHT` → `leftToRight`
+   - `RIGHT_TO_LEFT` → `rightToLeft`
+   - `TOP_TO_BOTTOM` → `topToBottom`
 
-
-
-## [2.0.0] - Release
-
- * Added null safety 
-
-## [1.2.1] - Release
-
- * Improve code document
-
-## [1.2.0] - Release
-
- * Implement swipe to open feature for sliderDirection **LEFT_TO_RIGHT** and **RIGHT_TO_LEFT**.
- * Deprecate parameter `sliderMenuOpenOffset` and `sliderMenuCloseOffset`. You can use `sliderMenuOpenSize` and `sliderMenuCloseSize`.
- * Deprecate parameter `sliderOpen`. You can use `slideDirection`
- * Deprecate parameter `sliderAnimationTimeInMilliseconds`. You can use `animationDuration`
- * You can access `animationController` by key.
- * Bug fixed
-
-## [1.0.3] - Release
-
- * Added TopToBottom slide feature
- * Added Shadow feature with shadowColor,shadowBlurRadius and shadowSpread dynamic handle
- * Bug fixed
-
-
-## [1.0.2] - Release 
-
- * Added RightToLeft/LeftToRight slide feature
- * Bug fixed
-
-## [1.0.1] - Release 
-
- * Bug fixed
- 
-## [1.0.0] - Release 
-
- * Slider with custom animation time
- * Provide Basic Appbar with customization of color, sizes and title
- * Dynamic slider open and close offset
- * Provide drawer icon animation 
+### 📦 Notes
+- This package is **not an official update** of `flutter_slider_drawer` — it’s a **community customization** with additional features and better flexibility.
+- Original package: [flutter_slider_drawer](https://pub.dev/packages/flutter_slider_drawer)
