@@ -34,6 +34,14 @@ dependencies:
     return Scaffold(
       body: SliderDrawer(
         key: _sliderDrawerKey,
+/// this appBarConfig required it is like what you put in confing
+        appBarConfig: SliderAppBarConfig(
+                animationController: drawerController,
+                drawerOpenIcon: const AssetImage(CustomAssets.drawerImageOpen),
+                drawerCloseIcon: const AssetImage(CustomAssets.drawerImageClose),
+                padding: const EdgeInsets.all(0),
+                title: Text("App Bar"),
+              ),
         appBar: SliderAppBar(
           config: SliderAppBarConfig(
 /// Customizing open and close icon for drawer
@@ -90,6 +98,14 @@ class _MyAppState extends State<MyApp> {
     return Scaffold(
       body: SliderDrawer(
         key: _sliderDrawerKey,
+/// this appBarConfig required it is like what you put in confing
+        appBarConfig: SliderAppBarConfig(
+                animationController: drawerController,
+                drawerOpenIcon: const AssetImage(CustomAssets.drawerImageOpen),
+                drawerCloseIcon: const AssetImage(CustomAssets.drawerImageClose),
+                padding: const EdgeInsets.all(0),
+                title: Text("App Bar"),
+              ),
         appBar: SliderAppBar(
 /// this let you to do something when you click on the drawer (when you're opening and closing drawer)
                   onDrawerTap: () {
